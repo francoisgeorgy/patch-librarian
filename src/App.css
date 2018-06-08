@@ -1,0 +1,309 @@
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+}
+
+/* default is light-theme */
+html {
+
+    --link-color: #0000EE;
+    --link-color-hover: #551A8B;
+
+    --page-background: #fff;
+    --header-background: #e5e5e5;
+    --header-color: #333;
+    --header-bottom-border: #aaa;
+
+    --list-background: #e5e5e5;
+    --list-border: #ddd;
+
+    --text-normal: #333;
+    --text-low: #555;
+    --text-hover-background: #bbb;
+    --text-hover: #000;
+
+    --selection-background: #aaa;
+    --text-selection: #222;
+
+    --drop-zone-color: #333;
+    --drop-zone-border: #bbb;
+
+    --port-description-bg: var(--list-background);
+    --port-description-text: #555;
+    --port-border: none;
+    --port-shadow: 5px 5px 5px #ddd;
+    --port-enabled-description-bg: #d6d6ff;
+    --port-enabled-description-text: #000;
+    --port-state-text: #222;
+    --port-state-bg: var(--selection-background);
+    --port-state-border: none;
+    --port-enabled-state-bg: #12DD38;
+    --port-enabled-state-text: #222;
+
+}
+
+html[data-theme='dark'] {
+
+    --link-color: #6caedd;
+    --link-color-hover: #ffba00;
+
+    --page-background: #000;
+    --header-background: #1c2022;
+    --header-color: #d0d0d0;
+    --header-bottom-border: #000;
+
+    --list-background: #1c2022;
+    --list-border: none;
+
+    --text-normal: #e0e0e0;
+    --text-low: #bbb;
+    --text-hover-background: #4B4C4D;
+    --text-hover: #fff;
+
+    --selection-background: #3C3C3C;
+    --text-selection: #eee;
+
+    --drop-zone-color: #e0e0e0;
+    --drop-zone-border: #bbb;
+
+    --port-description-bg: var(--list-background);
+    --port-description-text: #bbb;
+    --port-border: 1px solid #3C3C3C;
+    --port-shadow: 5px 5px 5px #1C1C1C;
+    --port-enabled-description-bg: #d6d6ff;
+    --port-enabled-description-text: #eee;
+    --port-state-text: #e0e0e0;
+    --port-state-bg: var(--selection-background);
+    --port-state-border: none;
+    --port-enabled-state-bg: #12DD38;
+    --port-enabled-state-text: #eee;
+
+}
+
+/* https://css-tricks.com/custom-scrollbars-in-webkit/ */
+
+html[data-theme='dark'] ::-webkit-scrollbar {
+    background-color: #333;
+}
+
+html[data-theme='dark'] ::-webkit-scrollbar-track {
+    background-color: #333;
+}
+
+html[data-theme='dark'] ::-webkit-scrollbar-track-piece {
+    background-color: #333;
+}
+
+html[data-theme='dark'] ::-webkit-scrollbar-thumb {
+    background-color: #666;
+}
+
+#debug {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border-top: 1px solid #ccc;
+    background-color: #eee;
+    color: #555;
+    font-size: 0.8rem;
+}
+
+.App {
+    background-color: var(--page-background);
+    color: var(--text-normal);
+    margin: 0;
+    padding-bottom: 8px;
+    display: grid;
+    grid-template-columns:      /* 7 columns */
+            8px
+            1fr                 /* files */
+            8px
+            1.6fr               /* patches */
+            8px
+            200px               /* ports */
+            8px;
+    grid-template-rows:
+            40px                /* header */
+            8px                 /* empty-row */
+            40px                /* headers */
+            auto                /* files & patches */
+            100px;              /* drop-zone */
+    width: calc(100vw);
+    height: calc(100vh - 8px);
+}
+
+#header {
+    grid-row: 1;
+    grid-column: 1 / span 7;
+    background-color: var(--header-background);
+    color: var(--header-color);
+    height: 40px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#app-name {
+    flex-grow: 2;
+}
+
+#header .github {
+    color: var(--text-low);
+}
+
+#empty-row {
+    grid-row: 2;
+    grid-column: 1 / span 7;
+}
+
+#empty-col-left {
+    grid-row: 3 / span 2;
+    grid-column: 1;
+}
+
+#empty-col-middle-left {
+    grid-row: 3 / span 2;
+    grid-column: 3;
+}
+
+#empty-col-middle-right {
+    grid-row: 3 / span 2;
+    grid-column: 5;
+}
+
+#empty-col-right {
+    grid-row: 3 / span 2;
+    grid-column: 7;
+}
+
+.list-header {
+    align-self: stretch;
+    background-color: var(--header-background);
+    color: var(--header-color);
+    border-bottom: 1px solid var(--header-bottom-border);
+    display: flex;
+    flex-direction: row;
+    padding: 0 10px;
+}
+
+.list-header > h2 {
+    align-self: center;
+    flex-grow: 2;
+}
+
+.list {
+    border: var(--list-border);
+    background-color: var(--list-background);
+    color: var(--text-low);
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+#files-list-header  {
+    grid-row: 3;
+    grid-column: 2;
+}
+
+#files-list-actions {
+    flex-grow: 2;
+}
+
+#files-list-header > button {
+    align-self: center;
+}
+
+#btn-select-all-files,
+#btn-deselect-all-files {
+    margin-right: 10px;
+}
+
+#btn-remove-all-files {
+}
+
+#files-list {
+    grid-row: 4;
+    grid-column: 2;
+    overflow-y: scroll;
+    padding: 5px 5px 0 5px;
+}
+
+#drop-zone {
+    grid-row: 5;
+    grid-column: 2;
+    align-self: stretch;
+    display: flex;              /* to easily center text vertically and horizontally */
+    justify-content: center;
+    align-items: center;
+    margin: 8px 0 0 0;
+}
+
+.drop-zone {
+    background-color: var(--list-background);
+    text-align: center;
+    color: var(--drop-zone-color);
+    border: 2px dashed var(--drop-zone-border);
+    border-radius: 16px;
+}
+
+#patches-list-header {
+    grid-row: 3;
+    grid-column: 4;
+}
+
+#patches-list {
+    grid-row: 4;
+    grid-column: 4;
+    overflow-y: scroll;
+    padding: 5px 5px 0 5px;
+}
+
+#status {
+    grid-row: 5;
+    grid-column: 4;
+    overflow-y: scroll;
+    padding: 5px 5px 0 5px;
+}
+
+#ports {
+    grid-row: 3 / span 3;
+    grid-column: 6;
+    align-self: stretch;
+}
+
+a {
+    text-decoration: none;
+    color: var(--link-color);
+}
+
+a:hover {
+    color: var(--link-color-hover);
+}
+
+.btn {
+    background:none!important;
+    border:none;
+    padding:0!important;
+    color: var(--link-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    color: var(--link-color-hover);
+}
+
+.btn.spaced {
+    margin-right: 15px;
+}
+
+.btn.wide-spaced {
+    margin-right: 40px;
+}

@@ -1,0 +1,100 @@
+
+.patches-header {
+    margin-bottom: 5px;
+}
+
+#patches-count {
+    align-self: center;
+}
+
+.patches-header,
+.patch {
+    display: flex;
+    flex-direction: row;
+}
+
+.patch-header-number {
+}
+
+.patch-header-name {
+}
+
+.patch-header-filename {
+}
+
+.patch-header-manufacturer {
+}
+
+.patch-header-actions {
+}
+
+.patch {
+    padding: 3px 2px;
+}
+
+.patch.selected:hover,
+.patch:hover {
+    background-color: var(--text-hover-background);
+    color: var(--text-hover);
+}
+
+.patch.selected {
+    background-color: var(--selection-background);
+    color: var(--text-selection);
+}
+
+.patch-header-favorite,
+.patch-favorite {
+    width: 3rem;
+    text-align: left;
+}
+
+.patch-header-number,
+.patch-number {
+    width: 2rem;
+    padding-right: 0.8rem;
+    text-align: right;
+}
+
+.patch-header-name,
+.patch-name {
+    width: 30%;
+}
+
+.patch-name {
+}
+
+.patch-header-filename,
+.patch-filename {
+    width: 30%;
+}
+
+.patch-filename {
+    font-size: 0.85rem;
+}
+
+.patch-header-manufacturer,
+.patch-manufacturer {
+    width: 20%;
+}
+
+.patch-manufacturer {
+    font-size: 0.85rem;
+    color: var(--text-low);
+}
+
+.patch-header-actions,
+.patch-actions {
+    flex-grow: 2;
+    align-self: end;
+    text-align: right;
+    margin-top: -1px;
+}
+
+.patch-header-actions > span,
+.patch-actions > span {
+    margin-left: 1rem;
+}
+
+.patch-send-link {
+}

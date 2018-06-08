@@ -1,0 +1,58 @@
+#ports {
+    padding: 0 8px;
+    display: flex;              /* to easily center text vertically and horizontally */
+    flex-direction: column;
+}
+
+.port {
+    height: 120px;
+    margin-bottom: 10px;
+    border: var(--port-border);
+    box-shadow: var(--port-shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+.port-description {
+    flex-grow: 1;
+    padding: 5px;
+    background-color: var(--port-description-bg);
+    color: var(--port-description-text);
+}
+
+.port.enabled .port-description {
+    color: var(--port-enabled-description-text);
+}
+
+.port-state {
+    padding: 5px;
+    border-top: var(--port-state-border);
+    background-color: var(--port-state-bg);
+    color: var(--port-state-text);
+}
+
+.port.enabled .port-state {
+    color: var(--port-enabled-state-text);
+}
+
+.port-usage {
+    cursor: pointer;
+    font-size: 0.85rem;
+    user-select: none;
+    margin-left: 10px;
+}
+
+.port-manufacturer {
+}
+
+.port-manufacturer.unknown {
+    font-style: italic;
+}
+
+.port-name {
+    font-weight: bold;
+}
+
+.react-switch {
+    vertical-align: middle;
+}

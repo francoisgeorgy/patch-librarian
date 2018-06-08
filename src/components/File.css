@@ -1,0 +1,31 @@
+.file {
+    padding: 3px 2px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+}
+
+.file.selected {
+    background-color: var(--selection-background);
+    color: var(--text-selection);
+}
+
+.file.selected:hover,
+.file:hover {
+    background-color: var(--text-hover-background);
+    color: var(--text-hover);
+}
+
+.file:hover .file-name {
+}
+
+.file-name {
+    flex-grow: 2;
+}
+
+.file-remove {
+    margin-left: 6px;
+}
+
+.patches-count {
+}
