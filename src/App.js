@@ -36,11 +36,9 @@ class App extends Component {
     async readFiles(files) {
         await Promise.all(files.map(
             async file => {
-                // console.log(`${file.name}: compute hash`);
                 if (file.size > MAX_FILE_SIZE) {
                     console.log(`${file.name}: too big, ${file.size}`);
                 } else {
-                    // console.log(`await ${file.name}`);
                     const data = await new Response(file).arrayBuffer();
 
                     if (isSysexData(data)) {
@@ -119,8 +117,9 @@ class App extends Component {
     };
 
     onOutputChange = () => {
+        console.log('onOutputChange');
         let outs = {};
-        this.setState({outputs: outs});
+        this.setState({ outputs: outs });
     };
 
     togglePort = (port_id) => {
@@ -134,7 +133,7 @@ class App extends Component {
                 name: p.name
             };
         }
-        this.setState({outputs: outs});
+        this.setState({ outputs: outs });
     };
 
     selectTheme = (theme) => {
@@ -199,7 +198,7 @@ class App extends Component {
         return (
             <div className="App">
 
-                <SimpleStorage parent={this} blacklist={"outputs"} />
+                {/*<SimpleStorage parent={this} blacklist={"outputs"} />*/}
 
                 <Midi onOutputChange={this.onOutputChange} />
 

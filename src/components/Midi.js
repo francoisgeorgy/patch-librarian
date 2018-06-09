@@ -14,16 +14,26 @@ class Midi extends Component {
     }
 
     handleMidiEvent = e => {
-        // console.group(`handleMidiEvent: ${e.port.constructor.name} ${e.type}: ${e.port.name}`, e);
+
+        console.log(`handleMidiEvent: ${e.port.type} ${e.type}: ${e.port.name}`, e);
 
         // is disconnect event, remove the existing input listeners
+        /*
         if (e.type === "disconnected") {
             // console.log(`must disconnect ${e.port} ${e.port.id}`);
             this.disconnectInput(e.port.id);
         }
+        */
 
-        // console.log("call onoutputchange");
-        this.onOutputChange();
+        if (e.port.type === 'input') {
+            console.log(`ignore MIDI input`);
+            return;
+        }
+
+        if (e.port.type === 'output') {
+            console.log("call onOutputChange");
+            this.onOutputChange();
+        }
 
         // Note: if we don't display the events, than the UI will not be updated if we don't update the state.
         //       In that case we should call forceUpdate().
@@ -35,7 +45,6 @@ class Midi extends Component {
         // this.setState({ events: [...this.state.events, e]})
 
         // this.handleMidiState();
-        // console.groupEnd();
     };
 /*
     connectInput = id => {
@@ -50,6 +59,7 @@ class Midi extends Component {
         // this.setState({connectedInputs: [...this.state.connectedInputs, id]});
     };
 */
+/*
     disconnectInput = id => {
         // const i = inputById(id);
         // if (i) {
@@ -64,27 +74,20 @@ class Midi extends Component {
         // console.log('remove input from state.connectedInputs');
         // this.setState({connectedInputs: current});
     };
-
+*/
     midiOn = err => {
         if (err) {
-            // console.log("WebMidi could not be enabled.", err);
+            console.warn("WebMidi could not be enabled.", err);
         } else {
-            // console.log("WebMidi enabled!");
-            // console.log("WebMidi inputs", WebMidi.inputs);
-            // console.log("WebMidi outputs", WebMidi.outputs);
-            // WebMidi.inputs.map(i => console.log("found input:" + i.name, i));     // debug
-            // WebMidi.outputs.map(i => console.log("found output:" + i.name, i));   // debug
+            console.log("WebMidi enabled!");
             WebMidi.addListener("connected", this.handleMidiEvent);
             WebMidi.addListener("disconnected", this.handleMidiEvent);
-            // this.handleMidiState();
         }
     };
 
     componentDidMount() {
-        // console.log('App.componentDidMount');
         WebMidi.enable(this.midiOn, true);  // true to enable sysex support
     }
-
 
     render() {
         return null;

@@ -17,7 +17,6 @@ class MidiPorts extends Component {
      */
     render() {
         let ports = WebMidi.outputs;
-        // console.log("render <MidiPorts>", ports, this.props.outputs);
         if (!ports) return <div id={"ports"}></div>;
         return (
             <div id={"ports"}>

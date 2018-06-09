@@ -17,13 +17,6 @@ class Patches extends Component {
         }
     };
 
-/*
-    shouldComponentUpdate = (nextProps, nextState) => {
-        console.log("shouldComponentUpdate", nextProps, nextProps);
-        return true;
-    };
-*/
-
     sortPatches = (criteria) => {
         let directions = this.state.sort_directions;
         directions[criteria] = !directions[criteria];

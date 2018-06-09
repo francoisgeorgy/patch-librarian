@@ -11,7 +11,6 @@ const SYSEX_END = 0xF7;
  */
 function isSysexData(data) {
     let view = new DataView(data);
-    // console.log("isSysexData", data.byteLength);
     if (view.getUint8(0) !== SYSEX_START) return false;
     if (view.getUint8(data.byteLength - 1) !== SYSEX_END) return false;
 
@@ -49,12 +48,10 @@ function parseSysexData(data) {
                 break;
             }
             if (d[i] !== 0x00) {
-                // console.log("single byte manuf id: ", d[i]);
                 patch.manufacturer_id = d[i].toString(16).padStart(2, "0");
                 patch.manufacturer = getManufacturerName(patch.manufacturer_id);
             }
             if (d[i] === 0x00) {
-                // console.log("start of multi bytes manuf id");
                 multi_bytes_id = true;
                 patch.manufacturer_id = "00";    //d[i].toString(16);   // todo: hardcode "00"
             }
@@ -77,10 +74,8 @@ function parseSysexData(data) {
 
             // let hexString = (dd.map(function (n) {return n.toString(16).padStart(2, "0");})).join(" ");
             // console.log(hexString);
-            patch.data = new Uint8Array(dd);
 
-            // let ii = getInfos(info.data);
-            // console.log(`${info.manufacturer} [${ii.patch_name}]`, ii.patch_name.length);
+            patch.data = new Uint8Array(dd);
 
             // patch name and patch info, specific to Bass Station 2
             if (patch.manufacturer_id === FOCUSRITE_NOVATION) {
@@ -109,7 +104,6 @@ function parseSysexData(data) {
         dd.push(d[i]);
 
     }
-    // console.log('parseSysexData', patches);
     return patches;
 }
 
