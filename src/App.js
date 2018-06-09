@@ -223,7 +223,7 @@ class App extends Component {
                 <Midi onOutputChange={this.onOutputChange} />
 
                 <div id={"header"}>
-                    <div id={"app-name"}>SysEx librarian &bull; Version 0.1.0</div>
+                    <div id={"app-name"}>SysEx librarian &bull; Version 0.2.0</div>
                     <button type="button" id="btn-clear-status" className="btn wide-spaced" onClick={this.clearStatus}>clear status</button>
                     <button type="button" id="btn-select-dark-theme" className="btn spaced" onClick={() => this.selectTheme("dark")}>dark theme</button>
                     <button type="button" id="btn-select-light-theme" className="btn wide-spaced" onClick={() => this.selectTheme("light")}>light theme</button>

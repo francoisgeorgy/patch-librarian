@@ -1,6 +1,6 @@
 {
     "name": "patch-librarian",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "homepage": ".",
     "dependencies": {
         "@fortawesome/fontawesome": "^1.1.8",
