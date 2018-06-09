@@ -89,7 +89,6 @@ function parseSysexData(data) {
                 patch.name = "unknown";
             }
 
-            //TODO: compute patch hash
             patch.hash = hash.sha1(patch.data);
 
             patch_index++;

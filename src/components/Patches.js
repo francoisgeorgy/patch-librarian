@@ -77,11 +77,13 @@ class Patches extends Component {
                                 <div className="patch-favorite">
                                     <Rating
                                         stop={3}
+                                        direction={"rtl"}
                                         emptySymbol={<span className="icon-text">&#x2606;</span>}
                                         fullSymbol={<span className="icon-text">&#x2605;</span>}
                                         initialRating={patch.rating}
                                         onChange={(rating) => update(index, 'rating', rating)}
-                                    />
+                                    />&nbsp;
+                                    <a href="#0" onClick={(e) => {console.log('rating click', e); update(index, 'rating', 0)}}>&#215;</a>
                                 </div>
                                 <div className="patch-number">
                                     {patch.index}

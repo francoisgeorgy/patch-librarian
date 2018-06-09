@@ -26,11 +26,12 @@ class App extends Component {
 
     state = {
         theme: "light",
-        outputs: {},        // selected outputs
-        files: {},          // key is file's hash; NOT a File object
-        patches: [],        // list of patches
-        last_sent: -1,      // index of last patch sent
-        status: []          // status messages
+        outputs: {},            // selected outputs
+        files: {},              // key is file's hash; NOT a File object
+        patches: [],            // list of patches
+        stars: {},      // keep a list of starred patches' hashes
+        last_sent: -1,          // index of last patch sent
+        status: []              // status messages
     };
 
     async readFiles(files) {
@@ -53,6 +54,13 @@ class App extends Component {
 
                         let patches = parseSysexData(data);
                         patch_file.num_patches = patches.length;        // number of patches found in file
+
+
+                        //Object.keys(stars).map(patch_hash => patchesfiles[file_hash].selected = true);
+                        patches.map(p => {
+                            p.rating = this.state.stars.hasOwnProperty(p.hash) ? this.state.stars[p.hash] : 0;
+                            return p;
+                        });
 
                         //TODO: what to do if file (hash) already in list? Just override?
 
@@ -86,7 +94,19 @@ class App extends Component {
     updatePatch = (index, key, value) => {
         let patches = this.state.patches;
         patches[index][key] = value;
-        this.setState({ patches });
+
+        let stars = this.state.stars;
+        if (key === 'rating') {
+
+            console.log(index, value, patches[index].rating);
+
+            // let stars = this.state.patches_starred;
+            // if (stars.hasOwnProperty(patches[index].hash))
+            // if (patches[index].rating === value) patches[index].rating = 0;
+            stars[patches[index].hash] = value;
+        }
+
+        this.setState({ patches, stars });
     };
 
     // mark the latest patch sent
@@ -198,7 +218,7 @@ class App extends Component {
         return (
             <div className="App">
 
-                {/*<SimpleStorage parent={this} blacklist={"outputs"} />*/}
+                <SimpleStorage parent={this} blacklist={["outputs", "files", "patches", "last_sent", "status"]} />
 
                 <Midi onOutputChange={this.onOutputChange} />
 
@@ -254,11 +274,11 @@ class App extends Component {
                 <MidiPorts outputs={outputs} onToggle={this.togglePort} />
 
                 <div id="empty-col-right"/>
-{/*
-                <div id="debug">
+
+{/*                <div id="debug">
                     <pre>{JSON.stringify(this.state, null, 4)}</pre>
-                </div>
-*/}
+                </div>*/}
+
             </div>
         );
     }
