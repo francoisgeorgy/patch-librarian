@@ -16,6 +16,7 @@ import brands from '@fortawesome/fontawesome-free-brands';
 import Status from "./components/Status";
 import * as Utils from "./utils/utils.js";
 import {padZero} from "./utils/utils";
+import LZString from "lz-string";
 
 fontawesome.library.add(brands);
 
@@ -23,6 +24,8 @@ const MAX_FILE_SIZE = 5 * 1024*1024;
 
 //TODO: skip duplicate files with the use of the hash
 //TODO: use redux !
+
+console.log(process.env.REACT_APP_VERSION);
 
 class App extends Component {
 
@@ -143,8 +146,8 @@ class App extends Component {
                 Utils.toHexString(this.state.patches[index].data) +
                 padZero(SYSEX_END.toString(16), 2);
 
-        // let url = "https://sysex.io/bs2/print.html?" + "sysex" + "=" + encodeURIComponent(LZString.compressToBase64(s));
-        let url = "https://sysex.io/bs2/print.html?sysex=" + s;
+        let url = "https://sysex.io/bs2/print.html?" + "sysex" + "=" + encodeURIComponent(LZString.compressToBase64(s));
+        // let url = "https://sysex.io/bs2/print.html?sysex=" + s;
         window.open(url, "_blank", "width=800,height=600,location,resizable,scrollbars,status");
 
     };
@@ -240,7 +243,7 @@ class App extends Component {
                 <Midi onOutputChange={this.onOutputChange} />
 
                 <div id={"header"}>
-                    <div id={"app-name"}>SysEx librarian &bull; Version 0.2.0</div>
+                    <div id={"app-name"}>SysEx librarian &bull; Version {process.env.REACT_APP_VERSION}</div>
                     <button type="button" id="btn-clear-status" className="btn wide-spaced" onClick={this.clearStatus}>clear status</button>
                     <button type="button" id="btn-select-dark-theme" className="btn spaced" onClick={() => this.selectTheme("dark")}>dark theme</button>
                     <button type="button" id="btn-select-light-theme" className="btn wide-spaced" onClick={() => this.selectTheme("light")}>light theme</button>
