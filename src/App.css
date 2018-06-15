@@ -35,8 +35,8 @@ html {
     --port-description-text: #555;
     --port-border: none;
     --port-shadow: 5px 5px 5px #ddd;
-    --port-enabled-description-bg: #d6d6ff;
-    --port-enabled-description-text: #000;
+    --port-enabled-description-bg: #008800;
+    --port-enabled-description-text: #fff;
     --port-state-text: #222;
     --port-state-bg: var(--selection-background);
     --port-state-border: none;
@@ -73,7 +73,7 @@ html[data-theme='dark'] {
     --port-description-text: #bbb;
     --port-border: 1px solid #3C3C3C;
     --port-shadow: 5px 5px 5px #1C1C1C;
-    --port-enabled-description-bg: #d6d6ff;
+    --port-enabled-description-bg: #008800;
     --port-enabled-description-text: #eee;
     --port-state-text: #e0e0e0;
     --port-state-bg: var(--selection-background);

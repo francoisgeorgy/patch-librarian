@@ -21,6 +21,7 @@
 }
 
 .port.enabled .port-description {
+    background-color: var(--port-enabled-description-bg);
     color: var(--port-enabled-description-text);
 }
 
