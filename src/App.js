@@ -267,7 +267,7 @@ class App extends Component {
 
                 <Patches patches={patches} files={files} outputs={outputs} last_sent={last_sent} update={this.updatePatch} send={this.sendPatch} />
 
-                <Status status={status} />
+                <Status status={status} clear={this.clearStatus}/>
 
                 <div id="empty-col-middle-right"/>
 
