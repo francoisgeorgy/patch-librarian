@@ -8,6 +8,7 @@
         "@fortawesome/fontawesome-free-solid": "^5.0.13",
         "@fortawesome/react-fontawesome": "^0.0.20",
         "byte-size": "^4.0.3",
+        "hexy": "^0.2.11",
         "inter-ui": "^2.5.1",
         "lz-string": "^1.4.4",
         "midi-manufacturers": "^1.0.1",
