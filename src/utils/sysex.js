@@ -2,8 +2,8 @@ import midi_name, {FOCUSRITE_NOVATION} from "midi-manufacturers";
 import getInfos from "./bass_station_2_sysex";
 import hash from "object-hash";
 
-const SYSEX_START = 0xF0;
-const SYSEX_END = 0xF7;
+export const SYSEX_START = 0xF0;
+export const SYSEX_END = 0xF7;
 
 /**
  *

@@ -43,7 +43,7 @@ class Patches extends Component {
 
     render() {
 
-        const {patches, files, update, send, last_sent} = this.props;
+        const {patches, files, update, send, print, last_sent} = this.props;
 
         // if no file selected, display all patches
         let no_file_selected = !Object.keys(files).reduce((accumulator, currentValue) => accumulator || files[currentValue].selected, false);
@@ -94,6 +94,8 @@ class Patches extends Component {
                                 <div className="patch-filename">{files[patch.filehash].name}</div>
                                 <div className="patch-manufacturer">{patch.manufacturer}</div>
                                 <div className={"patch-actions"}>
+
+                                    <span className="patch-print-link"><button type="button" className="btn" onClick={() => print(index)}>&#x2399;</button></span>
                                     <span className="patch-send-link"><button type="button" className="btn" onClick={() => send(index)}>SEND &#9654;</button></span>
                                 </div>
                             </div>

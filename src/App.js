@@ -4,7 +4,7 @@ import Patches from "./components/Patches.js";
 import hash from "object-hash";
 import "inter-ui";
 import './App.css';
-import {isSysexData, parseSysexData} from "./utils/sysex";
+import {isSysexData, parseSysexData, SYSEX_END, SYSEX_START} from "./utils/sysex";
 import File from "./components/File";
 import Midi from "./components/Midi";
 import MidiPorts from "./components/MidiPorts";
@@ -14,6 +14,8 @@ import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import brands from '@fortawesome/fontawesome-free-brands';
 import Status from "./components/Status";
+import * as Utils from "./utils/utils.js";
+import {padZero} from "./utils/utils";
 
 fontawesome.library.add(brands);
 
@@ -130,6 +132,21 @@ class App extends Component {
         } else {
             this.updateStatus("There are no output available.", true);
         }
+    };
+
+    // Only for Bass-Station-2 patches
+    printPatch = (index) => {
+
+        // TODO: create a method to return a patch's all sysex data as an array
+        let s = padZero(SYSEX_START.toString(16), 2) +
+                Utils.toHexString(this.state.patches[index].manufacturer_id_bytes) +
+                Utils.toHexString(this.state.patches[index].data) +
+                padZero(SYSEX_END.toString(16), 2);
+
+        // let url = "https://sysex.io/bs2/print.html?" + "sysex" + "=" + encodeURIComponent(LZString.compressToBase64(s));
+        let url = "https://sysex.io/bs2/print.html?sysex=" + s;
+        window.open(url, "_blank", "width=800,height=600,location,resizable,scrollbars,status");
+
     };
 
     onDrop = (files) => {
@@ -265,7 +282,7 @@ class App extends Component {
                     <span id="patches-count">{ n_sel_patches } patch{ n_sel_patches > 1 ? "es" : "" }</span>
                 </div>
 
-                <Patches patches={patches} files={files} outputs={outputs} last_sent={last_sent} update={this.updatePatch} send={this.sendPatch} />
+                <Patches patches={patches} files={files} outputs={outputs} last_sent={last_sent} update={this.updatePatch} send={this.sendPatch} print={this.printPatch} />
 
                 <Status status={status} clear={this.clearStatus}/>
 
