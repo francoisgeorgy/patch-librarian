@@ -13,21 +13,6 @@
     flex-direction: row;
 }
 
-.patch-header-number {
-}
-
-.patch-header-name {
-}
-
-.patch-header-filename {
-}
-
-.patch-header-manufacturer {
-}
-
-.patch-header-actions {
-}
-
 .patch {
     padding: 3px 2px;
 }
@@ -58,15 +43,12 @@
 
 .patch-header-name,
 .patch-name {
-    width: 30%;
-}
-
-.patch-name {
+    width: 26%;
 }
 
 .patch-header-filename,
 .patch-filename {
-    width: 30%;
+    width: 32%;
 }
 
 .patch-filename {
@@ -75,7 +57,7 @@
 
 .patch-header-manufacturer,
 .patch-manufacturer {
-    width: 20%;
+    /*width: 22%;*/
 }
 
 .patch-manufacturer {
