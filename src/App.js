@@ -10,22 +10,22 @@ import Midi from "./components/Midi";
 import MidiPorts from "./components/MidiPorts";
 import {portFromId} from "./utils/ports";
 import SimpleStorage from "react-simple-storage";
-import fontawesome from '@fortawesome/fontawesome'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import brands from '@fortawesome/fontawesome-free-brands';
+// import fontawesome from '@fortawesome/fontawesome'
+// import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+// import brands from '@fortawesome/fontawesome-free-brands';
 import Status from "./components/Status";
 import * as Utils from "./utils/utils.js";
 import {padZero} from "./utils/utils";
 import LZString from "lz-string";
 
-fontawesome.library.add(brands);
+// fontawesome.library.add(brands);
 
 const MAX_FILE_SIZE = 5 * 1024*1024;
 
 //TODO: skip duplicate files with the use of the hash
 //TODO: use redux !
 
-console.log(process.env.REACT_APP_VERSION);
+// console.log(process.env.REACT_APP_VERSION);
 
 class App extends Component {
 
@@ -59,7 +59,6 @@ class App extends Component {
 
                         let patches = parseSysexData(data);
                         patch_file.num_patches = patches.length;        // number of patches found in file
-
 
                         //Object.keys(stars).map(patch_hash => patchesfiles[file_hash].selected = true);
                         patches.map(p => {
@@ -153,6 +152,7 @@ class App extends Component {
     };
 
     onDrop = (files) => {
+        // noinspection JSIgnoredPromiseFromCall
         this.readFiles(files);  // returned promise is ignored, this is normal.
     };
 
@@ -249,7 +249,7 @@ class App extends Component {
                     <button type="button" id="btn-select-light-theme" className="btn wide-spaced" onClick={() => this.selectTheme("light")}>light theme</button>
                     <a href="https://github.com/francoisgeorgy" target="_blank" rel="noopener noreferrer"
                         title="Documentation, help and source code available on GitHub">
-                        <FontAwesomeIcon icon={['fab', 'github']} size="2x" className="github" />
+                        {/*<FontAwesomeIcon icon={['fab', 'github']} size="2x" className="github" />*/}
                     </a>
                 </div>
 
@@ -275,6 +275,7 @@ class App extends Component {
                 </div>
 
                 <Dropzone id="drop-zone" onDrop={this.onDrop} className="drop-zone">
+                    {/*{({getRootProps}) => <div>Drop files here or click to open file dialog</div>}*/}
                     Drop files here or click to open file dialog
                 </Dropzone>
 

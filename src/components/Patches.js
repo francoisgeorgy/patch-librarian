@@ -57,9 +57,11 @@ class Patches extends Component {
                     <div className="patch-header-number">
                         <a href="#index" onClick={() => this.sortPatches("index")}>N</a>
                     </div>
+{/*
                     <div className="patch-header-name">
-                        <a href="#name" onClick={() => this.sortPatches("name")}>Name</a> {/*&#9650; &#9660;*/}
+                        <a href="#name" onClick={() => this.sortPatches("name")}>Name</a> &#9650; &#9660;
                     </div>
+*/}
                     <div className="patch-header-filename">
                         <a href="#filename" onClick={() => this.sortPatches("filename")}>File</a> {/*&#9650; &#9660;*/}
                     </div>
@@ -70,6 +72,40 @@ class Patches extends Component {
                     </div>
                 </div>
 
+                <div className="patch">
+{/*
+                    <div className="patch-favorite">
+                        <Rating
+                            stop={3}
+                            direction={"rtl"}
+                            emptySymbol={<span className="icon-text">&#x2606;</span>}
+                            fullSymbol={<span className="icon-text">&#x2605;</span>}
+                            initialRating={patch.rating}
+                            onChange={(rating) => update(index, 'rating', rating)}
+                        />&nbsp;
+                        <a href="#0" onClick={(e) => {console.log('rating click', e); update(index, 'rating', 0)}}>&#215;</a>
+                    </div>
+*/}
+{/*
+                    <div className="patch-number">
+                        {patch.index}
+                    </div>
+*/}
+
+                    <div className="patch-name">
+                        {/*{patch.name}*/}
+                        {patches.length} sysex messages
+                    </div>
+
+                    <div className="patch-filename">{/* files[patch.filehash].name */}file</div>
+                    <div className="patch-manufacturer">{/* patch.manufacturer*/ }manuf</div>
+                    <div className={"patch-actions"}>
+                        {/*<span className="patch-print-link"><button type="button" className="btn" onClick={() => print(index)}>&#x2399;</button></span>*/}
+                        <span className="patch-send-link"><button type="button" className="btn" onClick={() => send()}>SEND &#9654;</button></span>
+                    </div>
+                </div>
+
+{/*
                 {patches.map((patch, index) => {
                     if (no_file_selected || this.isVisible(index)) {
                         return (
@@ -88,13 +124,14 @@ class Patches extends Component {
                                 <div className="patch-number">
                                     {patch.index}
                                 </div>
+
                                 <div className="patch-name">
                                     {patch.name}
                                 </div>
+
                                 <div className="patch-filename">{files[patch.filehash].name}</div>
                                 <div className="patch-manufacturer">{patch.manufacturer}</div>
                                 <div className={"patch-actions"}>
-
                                     <span className="patch-print-link"><button type="button" className="btn" onClick={() => print(index)}>&#x2399;</button></span>
                                     <span className="patch-send-link"><button type="button" className="btn" onClick={() => send(index)}>SEND &#9654;</button></span>
                                 </div>
@@ -104,6 +141,7 @@ class Patches extends Component {
                         return null;
                     }
                 })}
+*/}
 
             </div>
         );
